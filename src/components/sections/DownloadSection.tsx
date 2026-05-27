@@ -25,7 +25,7 @@ const platforms = [
     installCmd: 'winget install AgentForge',
     fileName: 'AgentBrowser.exe',
     checksum: 'sha256: 8a4c219...b9f1d',
-    downloadUrl: '/AgentBrowser.exe',
+    downloadUrl: 'https://github.com/claver-web/AIBrowser_Download_Web/raw/main/public/AgentBrowser.exe',
   },
   {
     id: 'linux',
