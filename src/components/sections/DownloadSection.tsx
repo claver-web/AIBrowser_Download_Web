@@ -23,7 +23,7 @@ const platforms = [
     version: 'v1.2.0 — Windows 10/11',
     size: '14.7 MB',
     installCmd: 'winget install AgentForge',
-    fileName: 'comet_installer_latest.exe',
+    fileName: 'AgentBrowser.exe',
     checksum: 'sha256: 8a4c219...b9f1d',
     downloadUrl: '/AgentBrowser.exe',
   },
