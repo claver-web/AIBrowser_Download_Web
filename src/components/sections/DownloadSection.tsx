@@ -25,7 +25,7 @@ const platforms = [
     installCmd: 'winget install AgentForge',
     fileName: 'comet_installer_latest.exe',
     checksum: 'sha256: 8a4c219...b9f1d',
-    downloadUrl: '/AgentBrowser Setup 1.0.0.exe',
+    downloadUrl: '/AgentBrowser.exe',
   },
   {
     id: 'linux',
