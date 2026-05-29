@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import { motion } from 'framer-motion';
-import { Monitor, Apple, Terminal, ChevronDown, Copy, Check, Download } from 'lucide-react';
+import { Monitor, Apple, Terminal, Smartphone, ChevronDown, Copy, Check, Download } from 'lucide-react';
 
 const platforms = [
   {
@@ -37,6 +37,17 @@ const platforms = [
     fileName: 'agentforge-1.2.0-linux-x64.tar.gz',
     checksum: 'sha256: e4d909c...7b3d1',
     downloadUrl: '#',
+  },
+  {
+    id: 'android',
+    name: 'Android',
+    icon: Smartphone,
+    version: 'v1.2.0 — Android 10+',
+    size: '22.4 MB',
+    installCmd: 'Download and install APK',
+    fileName: 'browse_with_agent.apk',
+    checksum: 'sha256: 7b3d9...1e4c',
+    downloadUrl: 'https://github.com/claver-web/AIBrowser_Download_Web/raw/main/browse_with_agent.apk',
   },
 ];
 
@@ -78,11 +89,11 @@ export default function DownloadSection() {
             <span className="gradient-text">Install AgentForge</span>
           </h2>
           <p className="text-base text-zinc-500 max-w-lg mx-auto">
-            Available for macOS, Windows, and Linux. Get started in under a minute.
+            Available for macOS, Windows, Linux, and Android. Get started in under a minute.
           </p>
         </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
           {platforms.map((p, i) => (
             <motion.div
               key={p.id}
