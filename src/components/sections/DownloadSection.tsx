@@ -15,6 +15,7 @@ const platforms = [
     fileName: 'AgentForge-1.2.0-mac.dmg',
     checksum: 'sha256: 9f86d08...c152e',
     downloadUrl: '#',
+    upcoming: true,
   },
   {
     id: 'win',
@@ -37,6 +38,7 @@ const platforms = [
     fileName: 'agentforge-1.2.0-linux-x64.tar.gz',
     checksum: 'sha256: e4d909c...7b3d1',
     downloadUrl: '#',
+    upcoming: true,
   },
   {
     id: 'android',
@@ -117,14 +119,23 @@ export default function DownloadSection() {
               <p className="text-xs text-zinc-500 mb-5">{p.version}</p>
 
               {/* Download Button */}
-              <a 
-                href={p.downloadUrl}
-                download={p.id === 'win'}
-                className="btn-primary w-full justify-center text-sm py-2.5 mb-4"
-              >
-                <Download className="w-4 h-4" />
-                Download
-              </a>
+              {p.upcoming ? (
+                <button 
+                  disabled
+                  className="btn-primary w-full justify-center text-sm py-2.5 mb-4 opacity-50 cursor-not-allowed"
+                >
+                  Coming Soon
+                </button>
+              ) : (
+                <a 
+                  href={p.downloadUrl}
+                  download={p.id === 'win'}
+                  className="btn-primary w-full justify-center text-sm py-2.5 mb-4"
+                >
+                  <Download className="w-4 h-4" />
+                  Download
+                </a>
+              )}
 
               {/* Install command */}
               <div className="flex items-center gap-2 bg-black/40 border border-white/[0.06] rounded-lg px-3 py-2 mb-3">
