@@ -83,7 +83,7 @@ export default function WaitlistSection() {
             </motion.div>
           ) : (
             <form onSubmit={handleSubmit(onSubmit)} className="max-w-md mx-auto">
-              <div className="flex gap-3">
+              <div className="flex flex-col sm:flex-row gap-3">
                 <div className="flex-1 relative">
                   <input
                     {...register('email')}
@@ -95,7 +95,7 @@ export default function WaitlistSection() {
                 <button
                   type="submit"
                   disabled={isSubmitting}
-                  className="btn-primary py-3 px-6 disabled:opacity-50 disabled:cursor-not-allowed"
+                  className="btn-primary w-full sm:w-auto justify-center py-3 px-6 disabled:opacity-50 disabled:cursor-not-allowed"
                 >
                   {isSubmitting ? (
                     <Loader2 className="w-4 h-4 animate-spin" />
