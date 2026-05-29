@@ -35,7 +35,9 @@ export default function RootLayout({
   return (
     <html lang="en" className="dark">
       <body className={`${inter.variable} font-sans antialiased noise-overlay`}>
-        {children}
+        <div className="relative flex min-h-screen flex-col overflow-x-hidden">
+          {children}
+        </div>
         <Toaster
           position="bottom-right"
           toastOptions={{
