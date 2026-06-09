@@ -26,7 +26,7 @@ const platforms = [
     installCmd: 'winget install AgentForge',
     fileName: 'AgentBrowser.exe',
     checksum: 'sha256: 8a4c219...b9f1d',
-    downloadUrl: 'https://github.com/claver-web/AIBrowser_Download_Web/raw/main/public/AgentBrowser.exe',
+    downloadUrl: 'https://imp-links.s3.ap-south-1.amazonaws.com/AgentBrowser.exe',
   },
   {
     id: 'linux',
@@ -49,7 +49,7 @@ const platforms = [
     installCmd: 'Download and install APK',
     fileName: 'browse_with_agent.apk',
     checksum: 'sha256: 7b3d9...1e4c',
-    downloadUrl: 'https://github.com/claver-web/AIBrowser_Download_Web/raw/main/browse_with_agent.apk',
+    downloadUrl: 'https://imp-links.s3.ap-south-1.amazonaws.com/browse_with_agent.apk',
   },
 ];
 
