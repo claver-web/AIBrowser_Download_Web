@@ -3,7 +3,6 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Zap, Menu, X } from 'lucide-react';
-import Link from 'next/link';
 
 const links = [
   { label: 'Features', href: '#features' },
@@ -23,7 +22,7 @@ export default function Navigation() {
   }, []);
 
   const handleMobileClick = () => {
-    // Allow native smooth scrolling to finish before unmounting the menu
+    // Wait 400ms to allow native scroll to execute before unmounting the menu
     setTimeout(() => {
       setOpen(false);
     }, 400);
@@ -39,36 +38,36 @@ export default function Navigation() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
-          <Link href="#" className="flex items-center gap-2.5 group">
+          <a href="#" className="flex items-center gap-2.5 group">
             <div className="w-8 h-8 rounded-lg bg-white flex items-center justify-center transition-transform group-hover:scale-105">
               <Zap className="w-4 h-4 text-black" />
             </div>
             <span className="text-[15px] font-semibold tracking-tight text-white">
               AgentForge
             </span>
-          </Link>
+          </a>
 
           {/* Desktop links */}
           <div className="hidden md:flex items-center gap-1">
             {links.map((l) => (
-              <Link
+              <a
                 key={l.href}
                 href={l.href}
                 className="px-4 py-2 text-[13px] font-medium text-zinc-400 hover:text-white transition-colors rounded-full hover:bg-white/[0.04]"
               >
                 {l.label}
-              </Link>
+              </a>
             ))}
           </div>
 
           {/* CTA + Hamburger */}
           <div className="flex items-center gap-2 sm:gap-3">
-            <Link 
+            <a 
               href="#waitlist" 
               className="inline-flex btn-primary text-[11px] sm:text-sm !py-1.5 !px-3 sm:!py-2 sm:!px-5"
             >
               Get Early Access
-            </Link>
+            </a>
             <button
               onClick={() => setOpen(!open)}
               className="md:hidden w-9 h-9 flex items-center justify-center rounded-full bg-white/5 text-white"
@@ -91,14 +90,14 @@ export default function Navigation() {
           >
             <div className="px-4 py-4 space-y-1">
               {links.map((l) => (
-                <Link
+                <a
                   key={l.href}
                   href={l.href}
                   onClick={handleMobileClick}
                   className="block px-4 py-3 text-sm text-zinc-300 hover:text-white hover:bg-white/5 rounded-lg transition-colors"
                 >
                   {l.label}
-                </Link>
+                </a>
               ))}
             </div>
           </motion.div>
