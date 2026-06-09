@@ -3,6 +3,7 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Zap, Menu, X } from 'lucide-react';
+import Link from 'next/link';
 
 const links = [
   { label: 'Features', href: '#features' },
@@ -21,22 +22,11 @@ export default function Navigation() {
     return () => window.removeEventListener('scroll', handler);
   }, []);
 
-  const handleScroll = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
-    e.preventDefault();
-    const targetId = href.replace('#', '');
-    setOpen(false);
-    
+  const handleMobileClick = () => {
+    // Allow native smooth scrolling to finish before unmounting the menu
     setTimeout(() => {
-      const elem = document.getElementById(targetId);
-      if (elem) {
-        try {
-          elem.scrollIntoView({ behavior: 'smooth' });
-        } catch (err) {
-          // Fallback for older browsers (like older iOS Safari)
-          window.scrollTo(0, elem.offsetTop);
-        }
-      }
-    }, 150);
+      setOpen(false);
+    }, 400);
   };
 
   return (
@@ -49,38 +39,36 @@ export default function Navigation() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
-          <a href="#" className="flex items-center gap-2.5 group">
+          <Link href="#" className="flex items-center gap-2.5 group">
             <div className="w-8 h-8 rounded-lg bg-white flex items-center justify-center transition-transform group-hover:scale-105">
               <Zap className="w-4 h-4 text-black" />
             </div>
             <span className="text-[15px] font-semibold tracking-tight text-white">
               AgentForge
             </span>
-          </a>
+          </Link>
 
           {/* Desktop links */}
           <div className="hidden md:flex items-center gap-1">
             {links.map((l) => (
-              <a
+              <Link
                 key={l.href}
                 href={l.href}
-                onClick={(e) => handleScroll(e, l.href)}
                 className="px-4 py-2 text-[13px] font-medium text-zinc-400 hover:text-white transition-colors rounded-full hover:bg-white/[0.04]"
               >
                 {l.label}
-              </a>
+              </Link>
             ))}
           </div>
 
           {/* CTA + Hamburger */}
           <div className="flex items-center gap-2 sm:gap-3">
-            <a 
+            <Link 
               href="#waitlist" 
-              onClick={(e) => handleScroll(e, '#waitlist')}
               className="inline-flex btn-primary text-[11px] sm:text-sm !py-1.5 !px-3 sm:!py-2 sm:!px-5"
             >
               Get Early Access
-            </a>
+            </Link>
             <button
               onClick={() => setOpen(!open)}
               className="md:hidden w-9 h-9 flex items-center justify-center rounded-full bg-white/5 text-white"
@@ -103,14 +91,14 @@ export default function Navigation() {
           >
             <div className="px-4 py-4 space-y-1">
               {links.map((l) => (
-                <a
+                <Link
                   key={l.href}
                   href={l.href}
-                  onClick={(e) => handleScroll(e, l.href)}
+                  onClick={handleMobileClick}
                   className="block px-4 py-3 text-sm text-zinc-300 hover:text-white hover:bg-white/5 rounded-lg transition-colors"
                 >
                   {l.label}
-                </a>
+                </Link>
               ))}
             </div>
           </motion.div>
