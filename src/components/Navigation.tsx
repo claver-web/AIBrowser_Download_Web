@@ -24,11 +24,19 @@ export default function Navigation() {
   const handleScroll = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
     e.preventDefault();
     const targetId = href.replace('#', '');
-    const elem = document.getElementById(targetId);
-    if (elem) {
-      elem.scrollIntoView({ behavior: 'smooth' });
-    }
     setOpen(false);
+    
+    setTimeout(() => {
+      const elem = document.getElementById(targetId);
+      if (elem) {
+        try {
+          elem.scrollIntoView({ behavior: 'smooth' });
+        } catch (err) {
+          // Fallback for older browsers (like older iOS Safari)
+          window.scrollTo(0, elem.offsetTop);
+        }
+      }
+    }, 150);
   };
 
   return (
