@@ -83,7 +83,7 @@ export default function Navigation() {
                 <a
                   key={l.href}
                   href={l.href}
-                  onClick={() => setOpen(false)}
+                  onClick={() => setTimeout(() => setOpen(false), 50)}
                   className="block px-4 py-3 text-sm text-zinc-300 hover:text-white hover:bg-white/5 rounded-lg transition-colors"
                 >
                   {l.label}
