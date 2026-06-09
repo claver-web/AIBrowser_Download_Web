@@ -21,6 +21,16 @@ export default function Navigation() {
     return () => window.removeEventListener('scroll', handler);
   }, []);
 
+  const handleScroll = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+    e.preventDefault();
+    const targetId = href.replace('#', '');
+    const elem = document.getElementById(targetId);
+    if (elem) {
+      elem.scrollIntoView({ behavior: 'smooth' });
+    }
+    setOpen(false);
+  };
+
   return (
     <motion.nav
       initial={{ y: -100 }}
@@ -46,6 +56,7 @@ export default function Navigation() {
               <a
                 key={l.href}
                 href={l.href}
+                onClick={(e) => handleScroll(e, l.href)}
                 className="px-4 py-2 text-[13px] font-medium text-zinc-400 hover:text-white transition-colors rounded-full hover:bg-white/[0.04]"
               >
                 {l.label}
@@ -55,7 +66,11 @@ export default function Navigation() {
 
           {/* CTA + Hamburger */}
           <div className="flex items-center gap-2 sm:gap-3">
-            <a href="#waitlist" className="inline-flex btn-primary text-[11px] sm:text-sm !py-1.5 !px-3 sm:!py-2 sm:!px-5">
+            <a 
+              href="#waitlist" 
+              onClick={(e) => handleScroll(e, '#waitlist')}
+              className="inline-flex btn-primary text-[11px] sm:text-sm !py-1.5 !px-3 sm:!py-2 sm:!px-5"
+            >
               Get Early Access
             </a>
             <button
@@ -83,7 +98,7 @@ export default function Navigation() {
                 <a
                   key={l.href}
                   href={l.href}
-                  onClick={() => setTimeout(() => setOpen(false), 50)}
+                  onClick={(e) => handleScroll(e, l.href)}
                   className="block px-4 py-3 text-sm text-zinc-300 hover:text-white hover:bg-white/5 rounded-lg transition-colors"
                 >
                   {l.label}
