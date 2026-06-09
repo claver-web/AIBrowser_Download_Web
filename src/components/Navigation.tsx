@@ -54,8 +54,8 @@ export default function Navigation() {
           </div>
 
           {/* CTA + Hamburger */}
-          <div className="flex items-center gap-3">
-            <a href="#waitlist" className="hidden md:inline-flex btn-primary text-sm py-2 px-5">
+          <div className="flex items-center gap-2 sm:gap-3">
+            <a href="#waitlist" className="inline-flex btn-primary text-[11px] sm:text-sm !py-1.5 !px-3 sm:!py-2 sm:!px-5">
               Get Early Access
             </a>
             <button
@@ -89,13 +89,6 @@ export default function Navigation() {
                   {l.label}
                 </a>
               ))}
-              <a
-                href="#waitlist"
-                onClick={() => setOpen(false)}
-                className="block mt-2 text-center btn-primary text-sm py-2.5"
-              >
-                Get Early Access
-              </a>
             </div>
           </motion.div>
         )}
